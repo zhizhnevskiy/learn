@@ -1,0 +1,45 @@
+.test_header {
+    background: purple;
+    height: 100px;
+}
+
+.test_section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.test_h1 {
+    text-align: center;
+    color: white;
+    line-height: 100px;
+    margin: 0;
+}
+
+.test_article {
+    padding: 10px;
+    margin: 10px;
+    background: aqua;
+    flex: 1 200px;
+}
+
+.test_article:nth-of-type(3) {
+    flex: 3 200px;
+    display: flex;
+    flex-flow: column;
+}
+
+.test_div:first-child {
+    flex: 1 100px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.test_button {
+    flex: 1;
+    margin: 5px;
+    font-size: 18px;
+    line-height: 1.5;
+}
