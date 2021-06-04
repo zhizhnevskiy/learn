@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: null,
+        };
+    }
+
     render() {
         return (
-            <button className="square">
-                {/* TODO */}
+            <button
+                className="square"
+                onClick={() => this.setState({value: 'X'})}
+            >
+                {this.state.value}
             </button>
         );
     }
@@ -14,16 +24,15 @@ class Square extends React.Component {
 
 class Board extends React.Component {
     renderSquare(i) {
-        return <Square />;
+        return <Square value={i}/>;
     }
 
     render() {
         const status = 'Next player: X';
-        const status2 = 'Next player: Y';
 
         return (
             <div>
-                <div className="status"><ShoppingList name="Mark" />{status} or {status2}</div>
+                <div className="status">{status}</div>
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
@@ -49,7 +58,7 @@ class Game extends React.Component {
         return (
             <div className="game">
                 <div className="game-board">
-                    <Board />
+                    <Board/>
                 </div>
                 <div className="game-info">
                     <div>{/* status */}</div>
@@ -60,23 +69,9 @@ class Game extends React.Component {
     }
 }
 
-class ShoppingList extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>Your social network, {this.props.name}</h1>
-                <ul>
-                    <li>Instagram</li>
-                    <li>WhatsApp</li>
-                    <li>Oculus</li>
-                </ul>
-            </div>
-        );
-    }
-}
 // ========================================
 
 ReactDOM.render(
-    <Game />,
+    <Game/>,
     document.getElementById('root')
 );
