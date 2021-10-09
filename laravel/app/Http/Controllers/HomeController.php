@@ -66,8 +66,56 @@ class HomeController extends Controller
 //            'name' => 'Yura'
 //        ]);
 
-        $data =  DB::table('country')->get();
+//        $data =  DB::table('country')->get();
+//        $data =  DB::table('country')->limit(5)->get();
+//        $data =  DB::table('country')->select('Code', 'Name')
+//            ->limit(5)->get();
+//        $data =  DB::table('country')->select('Code', 'Name')->first();
+//        $data =  DB::table('country')->select('Code', 'Name')
+//            ->orderBy('Code', 'desc')->first();
+//        $data =  DB::table('city')->select('ID', 'Name')
+//            ->find(2);
+//        $data =  DB::table('city')->select('ID', 'Name')
+//            ->where('id','<',4)->get();
+//        $data =  DB::table('city')->select('ID', 'Name')
+//            ->where([
+//                ['ID', '>', 1],
+//                ['ID', '<', 5],
+//            ])->get();
+//        $data =  DB::table('city')
+//            ->where('ID', '<', 5)->value('Name');
+//        $data =  DB::table('country')->limit(10)->pluck('Name','Code');
+//        $data =  DB::table('country')->count();
+//        $data =  DB::table('country')->max('Population');
+//        $data =  DB::table('country')->sum('Population');
+//        $data =  DB::table('country')->avg('Population');
+//        $data =  DB::table('city')->select('CountryCode')->distinct()->get();
+        $data = DB::table('city')
+            ->select('city.ID',
+                'city.Name as city_name',
+                'country.Code',
+                'country.Name as country_name'
+            )->limit(10)
+            ->join('country',
+                'city.CountryCode',
+                '=',
+                'country.Code'
+            )->orderBy('city.ID')
+            ->get();
         dd($data);
         return $data;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
