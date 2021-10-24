@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -90,20 +91,34 @@ class HomeController extends Controller
 //        $data =  DB::table('country')->sum('Population');
 //        $data =  DB::table('country')->avg('Population');
 //        $data =  DB::table('city')->select('CountryCode')->distinct()->get();
-        $data = DB::table('city')
-            ->select('city.ID',
-                'city.Name as city_name',
-                'country.Code',
-                'country.Name as country_name'
-            )->limit(10)
-            ->join('country',
-                'city.CountryCode',
-                '=',
-                'country.Code'
-            )->orderBy('city.ID')
-            ->get();
-        dd($data);
-        return $data;
+
+//        $data = DB::table('city')
+//            ->select('city.ID',
+//                'city.Name as city_name',
+//                'country.Code',
+//                'country.Name as country_name'
+//            )->limit(10)
+//            ->join('country',
+//                'city.CountryCode',
+//                '=',
+//                'country.Code'
+//            )->orderBy('city.ID')
+//            ->get();
+//        dd($data);
+//        return $data;
+
+        $post = new Post();
+
+        $post->title = 'Article №2';
+//        $post->content = 'Lorem ipsum №2';
+        $post->save();
+
+
+        return view('home', [
+            'count' => 24,
+            'name' => 'Yura'
+        ]);
+
     }
 }
 
