@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 
@@ -107,12 +109,51 @@ class HomeController extends Controller
 //        dd($data);
 //        return $data;
 
-        $post = new Post();
+//        $post = new Post();
+//
+//        $post->title = 'Article №2';
+////        $post->content = 'Lorem ipsum №2';
+//        $post->save();
 
-        $post->title = 'Article №2';
-//        $post->content = 'Lorem ipsum №2';
-        $post->save();
+//        $data = Country::all();
+//        $data = Country::query()->limit(5)->get();
+//        $data = Country::query()->where('Code', '<', 'ALB')
+//            ->select('Code','Name')->offset(1)->limit(2)->get();
+//        $data = City::query()->find(5);
+//        $data = Country::query()->find('AGO');
 
+//        $post = new Post();
+//        $post->title = ' Article №3';
+//        $post->content = 'Lorem ipsum 3';
+//        $post->save();
+
+//        Post::query()->create([
+//            'title' => 'Article №4',
+//            'content' => 'Lorem ipsum 4'
+//        ]);
+
+//        $post = new Post();
+//        $post->fill([
+//            'title' => 'Article №5',
+//            'content' => 'Lorem ipsum 5'
+//        ]);
+//        $post->save();
+
+//        $post = Post::query()->find(7);
+//        $post->content = 'Update Content';
+//        $post->save();
+
+//        Post::query()->where('id', '>', 3)
+//            ->update([
+//                'updated_at' => NOW()
+//            ]);
+
+//        $post = Post::query()->find(7);
+//        if ($post != null) {
+//            $post->delete();
+//        }
+
+        Post::destroy(5,8);
 
         return view('home', [
             'count' => 24,
